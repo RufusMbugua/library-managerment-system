@@ -4,13 +4,19 @@
             <div class="alert alert-danger">{{\Session::get('book_add_error')}} <span class="close" data-dismiss="alert">&times;</span></div>
         @endif
         <label>Book name:</label>
-        <input class="form-control" name="book_name" placeholder="Enter Book's Name"/><br>
+        <input class="form-control" name="name" placeholder="Enter Book's Name"/><br>
 
         <label>Author's name:</label>
-        <input class="form-control" name="author_name" placeholder="Enter Author's Name" /><br>
+        <input class="form-control" name="author" placeholder="Enter Author's Name" /><br>
 
         <label>Price:</label>
-        <input class="form-control" name="book_price" placeholder="Enter Book's Price" /><br>
+        <input class="form-control" name="price" placeholder="Enter Book's Price" /><br>
+
+        {{-- <label>Purchased Date:</label>
+        <input class="form-control" type="date" name="purchased_date" placeholder="Enter Purchased Date" /><br>
+
+        <label>Published Date:</label>
+        <input class="form-control" type="date" name="published_date" placeholder="Enter Published Date" /><br> --}}
 
         <label>Number Of Copies:</label>
         <input class="form-control" name="number_of_copies" placeholder="Enter Number Of Copies" /><br>

@@ -17,8 +17,11 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('author');
-            $table->integer('borrows');
-            $table->integer('number_of_copies');
+            $table->timestamp('published_date')->nullable();
+            $table->timestamp('purchased_date')->nullable();
+            $table->string('genre')->nullable();
+            $table->integer('borrows')->default(0);
+            $table->integer('number_of_copies')->default(0);
             $table->integer('price');
             $table->timestamps();
         });

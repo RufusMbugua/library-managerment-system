@@ -1,21 +1,31 @@
 @extends('layouts.app')
 
-@section('title','Login')
-
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-5 col-md-offset-3" style="margin-top:10%">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3><strong>Login to SchooPhile LiMS</strong></h3></div>
-                <div class="panel-body">
+<div class="form-body">
+    <div class="website-logo">
+        <a href="index.html">
+            <div class="logo">
+                <img class="logo-size" src="images/logo-light.svg" alt="">
+            </div>
+        </a>
+    </div>
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+                <img src="images/graphic2.svg" alt="">
+            </div>
+        </div>
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Get more things done with Loggin platform.</h3>
+                    <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                    <div class="page-links">
+                        <a href="{{ url('/login') }}" class="active">Login</a><a href="register5.html">Register</a>
+                    </div>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -23,46 +33,26 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                            </div>
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            
+                                    <input id="password" type="password" class="form-control" name="password" required>
+    
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn">Login</button> <a href="forget5.html">Forget password?</a>
                         </div>
                     </form>
+                    <div class="other-links">
+                        <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
-
 @endsection

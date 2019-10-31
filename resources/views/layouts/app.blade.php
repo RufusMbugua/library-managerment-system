@@ -4,12 +4,43 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') - SchooPhile Library Management System</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Wilio Survey, Quotation, Review and Register form Wizard by Ansonika.">
+    <meta name="author" content="Ansonika">
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/menu.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/vendors.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+	
+	<!-- MODERNIZR MENU -->
+	<script src="js/modernizr.js"></script>
+    <title>@yield('title') Library Management System</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/jquery/jquery-ui.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/font-awesome-4.6.3/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/iofrm-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/iofrm-theme5.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -17,9 +48,13 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/jquery/jquery-ui.min.js')}}"></script>
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
 </head>
 
@@ -35,6 +70,7 @@
     </div>
   </div>
 </div>
+
 <script>
 function closeModal(){
   $('#default-modal').modal("hide");
@@ -49,65 +85,27 @@ function deleteModal(id,item){
   $('#def-modal').modal('show');
 }
 </script>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Preload -->
+	
+	<div id="loader_form">
+		<div data-loader="circle-side-2"></div>
+	</div><!-- /loader_form -->
+  <div class="cd-overlay-nav">
+		<span></span>
+	</div>
+	<!-- /cd-overlay-nav -->
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+	<div class="cd-overlay-content">
+		<span></span>
+	</div>
+	<!-- /cd-overlay-content -->
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <b>Schoo</b>Phile Library Management System
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                          <li><a href="{{ url('/login') }}">Login</a></li>
-                          <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#" onclick="showProfile()"><span class="fa fa-user"></span> Profile</a>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            <span class="fa fa-sign-out"></span> Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
+	<a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+    <div id="app" style="height:100%">
             @if(\Auth::check())
                 @include('layouts.top')
                 @if($errors)
@@ -117,14 +115,6 @@ function deleteModal(id,item){
                 @endif
             @endif
             @yield('content')
-        </div>
-    </div>
-    <br><br><br>
-    <div class="footer">
-      <center>
-        <hr />
-        <p class="footer-text">Copyright &copy; Swornim Labs 2016 - 2017</p>
-      </center>
     </div>
     <style>
       .footer{
@@ -149,5 +139,13 @@ function deleteModal(id,item){
 
 
     </script>
+    <!-- COMMON SCRIPTS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/common_scripts.min.js"></script>
+	<script src="js/velocity.min.js"></script>
+	<script src="js/functions.js"></script>
+
+	<!-- Wizard script -->
+	<script src="js/survey_func.js"></script>
 </body>
 </html>

@@ -28,6 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('book/edit', 'BookController@editBook')->name('book.edit');
     Route::get('book/edit/{id}', 'BookController@editBookView');
 
+    Route::get('games', 'GameController@index')->name('games');
+    Route::post('games', 'GameController@add')->name('game.add');
+    Route::get('game/{id}', 'GameController@view');
+    Route::get('game/info/{id}', 'GameController@gameInfo');
+    Route::post('game/edit', 'GameController@editGame')->name('game.edit');
+    Route::get('game/edit/{id}', 'GameController@editGameView');
+
     Route::get('borrowers', 'BorrowersController@index')->name('borrowers');
     Route::post('borrowers', 'BorrowersController@add')->name('borrowers.add');
 
